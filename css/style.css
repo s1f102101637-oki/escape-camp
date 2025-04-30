@@ -4,9 +4,9 @@
 :root {
   --bg: #f5f5f5;           /* ページ背景色 */
   --container-bg: #ffffff; /* コンテンツ背景色 */
-  --accent: #e60012;       /* JAL レッド */
+  --accent: #cc99ff;       /* JAL レッド */
   --text-dark: #333333;    /* メインテキスト色 */
-  --nav-bg: #e60012;       /* ナビ背景色 */
+  --nav-bg: #cc99ff;       /* ナビ背景色 */
   --nav-text: #ffffff;     /* ナビ文字色 */
 }
 
@@ -47,6 +47,16 @@ html, body {
 #intro.fade-out {
   opacity: 0;
   pointer-events: none;
+}
+
+/* サイトロゴ */
+#site-logo {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  width: 40px;
+  height: auto;
+  z-index: 1001;
 }
 
 /* プレイヤー */
@@ -166,7 +176,7 @@ li i {
   font-weight: 500;
 }
 .btn:hover {
-  background: #bf000f;
+  background: #cc99ff;
 }
 
 /* レスポンシブ */
