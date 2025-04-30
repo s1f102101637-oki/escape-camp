@@ -109,6 +109,16 @@
   const videoId = urlObj.searchParams.get('v');
 
   let player;
+  // イントロをフェードアウトしてメインコンテンツを表示する関数
+  function fadeIntro() {
+    document.getElementById('intro').classList.add('fade-out');
+    setTimeout(() => {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+      document.body.style.overflow = 'auto';
+    }, 1000);
+  }
+
   function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
       videoId: videoId,
@@ -121,15 +131,14 @@
         playsinline: 1
       },
       events: {
-        onReady: event => event.target.playVideo(),
+        onReady: event => {
+          event.target.playVideo();
+          // 動画長さに関わらず5秒後に強制フェードアウト
+          setTimeout(fadeIntro, 5000);
+        },
         onStateChange: event => {
           if (event.data === YT.PlayerState.ENDED) {
-            document.getElementById('intro').classList.add('fade-out');
-            setTimeout(() => {
-              document.getElementById('intro').style.display = 'none';
-              document.getElementById('main-content').style.display = 'block';
-              document.body.style.overflow = 'auto';
-            }, 1000);
+            fadeIntro();
           }
         }
       }
