@@ -26,35 +26,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleBtn = document.getElementById('nav-toggle');
   const closeBtn = document.getElementById('nav-close');
 
+  const openSidebar = () => {
+    sidebar.classList.add('open');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    closeBtn.setAttribute('aria-expanded', 'true');
+  };
+  const closeSidebar = () => {
+    sidebar.classList.remove('open');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    closeBtn.setAttribute('aria-expanded', 'false');
+  };
+
   if (toggleBtn && sidebar) {
-    toggleBtn.addEventListener('click', () => {
-      sidebar.classList.add('open');
-    });
+    toggleBtn.addEventListener('click', openSidebar);
   }
   if (closeBtn && sidebar) {
-    closeBtn.addEventListener('click', () => {
-      sidebar.classList.remove('open');
-    });
+    closeBtn.addEventListener('click', closeSidebar);
   }
 
   // サイドバー内リンククリックでサイドバーを閉じる
   if (sidebar) {
     sidebar.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', () => {
-        sidebar.classList.remove('open');
-      });
+      link.addEventListener('click', closeSidebar);
     });
   }
-
-  // スムーズスクロール
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-      const targetId = anchor.getAttribute('href');
-      const targetElem = document.querySelector(targetId);
-      if (targetElem) {
-        e.preventDefault();
-        targetElem.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
 });

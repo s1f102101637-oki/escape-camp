@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ダンス合宿サイト</title>
+  <title>SKΦ_P合宿</title>
 
   <!-- 外部スタイルシート -->
   <link rel="stylesheet" href="css/style.css">
@@ -17,20 +17,28 @@
 <body>
 
   <!-- サイトロゴ -->
-  <img id="site-logo" src="images/icon.png" alt="サイトロゴ">
+  <img id="site-logo" src="images/icon.png" alt="サイトロゴ" loading="lazy">
 
   <!-- ハンバーガーメニュー -->
-  <button id="nav-toggle" aria-label="メニューを開く">
+  <button id="nav-toggle"
+          aria-label="メニューを開く"
+          aria-haspopup="true"
+          aria-controls="sidebar"
+          aria-expanded="false">
     <i class="fas fa-bars"></i>
   </button>
 
-  <!-- サイドバー -->
-  <nav id="sidebar">
-    <button id="nav-close" aria-label="メニューを閉じる">
+ <!-- サイドバー -->
+ <nav id="sidebar"
+      role="navigation"
+      aria-label="メインナビゲーション">
+    <button id="nav-close"
+            aria-label="メニューを閉じる"
+            aria-expanded="true">
       <i class="fas fa-times"></i>
     </button>
     <ul>
-      <li><a href="#section-hero">ようこそ</a></li>
+      <li><a href="#section-hero">TOP</a></li>
       <li><a href="#section-2">詳細</a></li>
       <li><a href="#section-3">スケジュール</a></li>
       <li><a href="#section-4">持ち物</a></li>
@@ -43,31 +51,32 @@
   <section id="section-hero" class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content container" data-aos="fade-up">
-      <h1>ダンス合宿で最高の夏を</h1>
-      <p>飲み会、ダンス、花火、サウナ…思い出に残る体験を。</p>
+      <h1>SKΦ_P合宿</h1>
+      <p>花火！ サウナ！ ゲーム！ 飲み！
+        <br>うぉらぁぁぁぁぁぁぁぁぁ！
+      </p>
       <a href="#section-2" class="btn">詳細を見る</a>
     </div>
   </section>
 
   <!-- メインコンテンツ -->
-  <main id="main-content" class="container" data-aos="fade-up">
+  <main id="main-content" class="container" role="main" data-aos="fade-up">
     <section id="section-2" class="card" data-aos="fade-up">
       <h2>合宿の詳細</h2>
-      <p>場所: 〇〇合宿施設（仮）</p>
-      <p>日時: 2025年5月X日〜Y日（仮）</p>
+      <p>場所: 熱海レインボーヒルズ</p>
+      <p>日時: 2025年8月16日〜17日</p>
     </section>
     <section id="section-3" class="card" data-aos="fade-up">
       <h2>スケジュール</h2>
       <ul>
-        <li><i class="fas fa-map-marker-alt"></i>集合場所: 〇〇駅（仮）</li>
-        <li><i class="fas fa-clock"></i>集合時間: 9:00（仮）</li>
-        <li><i class="fas fa-clock"></i>解散日時: 18:00（仮）</li>
+        <li><i class="fas fa-map-marker-alt"></i>集合場所: 静岡県熱海市西熱海町２丁目１３－３７</li>
+        <li><i class="fas fa-clock"></i>集合時間: 8月16日 15:00</li>
+        <li><i class="fas fa-clock"></i>解散日時: 8月17日 10:00</li>
       </ul>
     </section>
     <section id="section-4" class="card" data-aos="fade-up">
       <h2>持ち物</h2>
       <ul>
-        <li><i class="fas fa-shoe-prints"></i>ダンスシューズ</li>
         <li><i class="fas fa-towel"></i>タオル</li>
         <li><i class="fas fa-mug-saucer"></i>飲み物（個人用）</li>
         <li><i class="fas fa-shirt"></i>替えの衣類</li>
@@ -84,10 +93,10 @@
     <section id="section-6" class="card" data-aos="fade-up">
       <h2>ギャラリー</h2>
       <div class="gallery">
-        <a href="images/photo1.jpg" data-lightbox="gallery"><img src="images/photo1_thumb.jpg" alt="花火の写真"></a>
-        <a href="images/photo2.jpg" data-lightbox="gallery"><img src="images/photo2_thumb.jpg" alt="ダンスの写真"></a>
-        <a href="images/photo3.jpg" data-lightbox="gallery"><img src="images/photo3_thumb.jpg" alt="サウナの写真"></a>
-        <a href="images/photo4.jpg" data-lightbox="gallery"><img src="images/photo4_thumb.jpg" alt="飲み会の写真"></a>
+        <a href="images/photo1.jpg" data-lightbox="gallery"><img src="images/photo1_thumb.jpg" alt="花火の写真" loading="lazy"></a>
+        <a href="images/photo2.jpg" data-lightbox="gallery"><img src="images/photo2_thumb.jpg" alt="ダンスの写真" loading="lazy"></a>
+        <a href="images/photo3.jpg" data-lightbox="gallery"><img src="images/photo3_thumb.jpg" alt="サウナの写真" loading="lazy"></a>
+        <a href="images/photo4.jpg" data-lightbox="gallery"><img src="images/photo4_thumb.jpg" alt="飲み会の写真" loading="lazy"></a>
       </div>
     </section>
   </main>
