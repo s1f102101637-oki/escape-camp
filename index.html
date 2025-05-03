@@ -4,24 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ダンス合宿サイト</title>
-  <!-- スタイルシート -->
+
+  <!-- 外部スタイルシート -->
   <link rel="stylesheet" href="css/style.css">
-  <!-- Font Awesome -->
+  <!-- Font Awesome (アイコン用) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- AOS CSS -->
+  <!-- AOS CSS (スクロールアニメーション) -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <!-- Lightbox CSS -->
+  <!-- Lightbox CSS (ギャラリー) -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 </head>
 <body>
 
   <!-- サイトロゴ -->
-  <img src="images/icon.png" alt="サイトロゴ" id="site-logo">
+  <img id="site-logo" src="images/icon.png" alt="サイトロゴ">
 
-  <!-- 固定ナビゲーションバー -->
-  <nav id="global-nav">
+  <!-- ハンバーガーメニュー -->
+  <button id="nav-toggle" aria-label="メニューを開く">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- サイドバー -->
+  <nav id="sidebar">
+    <button id="nav-close" aria-label="メニューを閉じる">
+      <i class="fas fa-times"></i>
+    </button>
     <ul>
-      <li><a href="#section-1">ようこそ</a></li>
+      <li><a href="#section-hero">ようこそ</a></li>
       <li><a href="#section-2">詳細</a></li>
       <li><a href="#section-3">スケジュール</a></li>
       <li><a href="#section-4">持ち物</a></li>
@@ -30,43 +39,49 @@
     </ul>
   </nav>
 
+  <!-- ヒーローセクション -->
+  <section id="section-hero" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content container" data-aos="fade-up">
+      <h1>ダンス合宿で最高の夏を</h1>
+      <p>飲み会、ダンス、花火、サウナ…思い出に残る体験を。</p>
+      <a href="#section-2" class="btn">詳細を見る</a>
+    </div>
+  </section>
+
   <!-- メインコンテンツ -->
-  <main id="main-content" class="container">
-    <section id="section-1" data-aos="fade-up">
-      <h1>ダンス合宿へようこそ！</h1>
-      <p>この合宿では、飲み会、ダンス、花火、サウナを通じて思い出に残る時間を過ごします。</p>
-    </section>
-    <section id="section-2" data-aos="fade-up">
+  <main id="main-content" class="container" data-aos="fade-up">
+    <section id="section-2" class="card" data-aos="fade-up">
       <h2>合宿の詳細</h2>
       <p>場所: 〇〇合宿施設（仮）</p>
       <p>日時: 2025年5月X日〜Y日（仮）</p>
     </section>
-    <section id="section-3" data-aos="fade-up">
+    <section id="section-3" class="card" data-aos="fade-up">
       <h2>スケジュール</h2>
       <ul>
-        <li><i class="fas fa-map-marker-alt"></i> 集合場所: 〇〇駅（仮）</li>
-        <li><i class="fas fa-clock"></i> 集合時間: 9:00（仮）</li>
-        <li><i class="fas fa-clock"></i> 解散日時: 18:00（仮）</li>
+        <li><i class="fas fa-map-marker-alt"></i>集合場所: 〇〇駅（仮）</li>
+        <li><i class="fas fa-clock"></i>集合時間: 9:00（仮）</li>
+        <li><i class="fas fa-clock"></i>解散日時: 18:00（仮）</li>
       </ul>
     </section>
-    <section id="section-4" data-aos="fade-up">
+    <section id="section-4" class="card" data-aos="fade-up">
       <h2>持ち物</h2>
       <ul>
-        <li><i class="fas fa-shoe-prints"></i> ダンスシューズ</li>
-        <li><i class="fas fa-towel"></i> タオル</li>
-        <li><i class="fas fa-mug-saucer"></i> 飲み物（個人用）</li>
-        <li><i class="fas fa-shirt"></i> 替えの衣類</li>
+        <li><i class="fas fa-shoe-prints"></i>ダンスシューズ</li>
+        <li><i class="fas fa-towel"></i>タオル</li>
+        <li><i class="fas fa-mug-saucer"></i>飲み物（個人用）</li>
+        <li><i class="fas fa-shirt"></i>替えの衣類</li>
       </ul>
     </section>
-    <section id="section-5" data-aos="fade-up">
+    <section id="section-5" class="card" data-aos="fade-up">
       <h2>注意事項</h2>
       <ul>
         <li>花火は21:00まで</li>
         <li>サウナ利用は一度に3名まで</li>
-        <li>館内は禁煙（指定場所で喫煙可）</li>
+        <li>館内は禁煙（指定場所以外）</li>
       </ul>
     </section>
-    <section id="section-6" data-aos="fade-up">
+    <section id="section-6" class="card" data-aos="fade-up">
       <h2>ギャラリー</h2>
       <div class="gallery">
         <a href="images/photo1.jpg" data-lightbox="gallery"><img src="images/photo1_thumb.jpg" alt="花火の写真"></a>
@@ -82,6 +97,6 @@
   <script src="js/main.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-  <script> AOS.init({ duration: 800 }); </script>
+  <script> AOS.init({ duration: 800 });</script>
 </body>
 </html>

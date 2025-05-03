@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Noto+Sans+JP:wght@300;500&display=swap');
 
 :root {
-  --bg: #f5f5f5;           /* ページ背景色 */
-  --container-bg: #ffffff; /* コンテンツ背景色 */
-  --accent: #cc99ff;       /* JAL レッド */
-  --text-dark: #333333;    /* メインテキスト色 */
-  --nav-bg: #cc99ff;       /* ナビ背景色 */
-  --nav-text: #ffffff;     /* ナビ文字色 */
+  --bg: #f5f5f5;
+  --container-bg: #ffffff;
+  --accent: #cc99ff;
+  --text-dark: #333333;
+  --nav-bg: #cc99ff;
+  --nav-text: #ffffff;
 }
 
 /* リセット */
@@ -17,12 +17,121 @@
   box-sizing: border-box;
 }
 
-/* ページ全体設定 */
-html, body {
+/* ページ全体 */
+html {
+  scroll-behavior: smooth; /* CSSネイティブスムーズスクロール */
+}
+html,
+body {
   background-color: var(--bg);
-  overflow: auto;
   font-family: 'Noto Sans JP', sans-serif;
   color: var(--text-dark);
+  overflow: auto;
+}
+
+/* サイトロゴ (ページ先頭のみ) */
+#site-logo {
+  position: absolute; /* スクロール時に追従しない */
+  top: 12px;
+  left: 12px;
+  width: 40px;
+  height: auto;
+  z-index: 1001;
+}
+
+/* ハンバーガーボタン (右側) */
+#nav-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px; /* 右側に移動 */
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--accent);
+  z-index: 1100;
+}
+
+/* サイドバー (トランスフォームで表示制御) */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background: var(--container-bg);
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  transform: translateX(-100%); /* 初期は画面外 */
+  transition: transform 0.3s ease;
+  z-index: 1050;
+  padding-top: 60px;
+}
+#sidebar.open {
+  transform: translateX(0); /* 開いた状態 */
+}
+#nav-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+#sidebar ul {
+  list-style: none;
+  padding: 0 16px;
+}
+#sidebar li + li {
+  margin-top: 1rem;
+}
+#sidebar a {
+  display: block;
+  padding: 0.5em 0;
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 500;
+}
+#sidebar a:hover {
+  background: rgba(204,153,255,0.2);
+}
+
+/* ヒーローセクション */
+.hero {
+  position: relative;
+  width: 100%;
+  /*aspect-ratio: 16 / 9; /* 横広16:9比率 */
+  height: 100vh;
+  background-image: url('../images/hero-background.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+.hero-content.container {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  /* 背景を半透明に設定 */
+  background-color: rgba(0, 0, 0, 0.4);
+  margin: 0;
+  padding: 1em; /* テキスト周りに余白を確保 */
+  border-radius: 4px;
+}
+.hero-content h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+}
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1em;
 }
 
 /* コンテナ */
@@ -33,81 +142,25 @@ html, body {
   padding: 24px 16px;
 }
 
-/* イントロ */
-#intro {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
+/* カード風レイアウト */
+.card {
   background: var(--container-bg);
-  z-index: 999;
-  transition: opacity 1s ease;
-}
-#intro.fade-out {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* サイトロゴ */
-#site-logo {
-  position: fixed;
-  top: 12px;
-  left: 12px;
-  width: 40px;
-  height: auto;
-  z-index: 1001;
-}
-
-/* プレイヤー */
-#player {
-  width: 100%;
-  height: 100%;
-}
-
-/* ナビゲーションバー */
-#global-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: var(--nav-bg);
-  z-index: 500;
-}
-#global-nav ul {
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-}
-#global-nav a {
-  display: block;
-  padding: 12px 8px;
-  color: var(--nav-text);
-  text-decoration: none;
-  font-weight: 500;
-}
-#global-nav a:hover {
-  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin: 24px 0;
+  padding: 24px;
+  will-change: transform;
 }
 
 /* メインコンテンツ */
 #main-content {
   display: none;
-  background: transparent;
-  padding-top: 56px; /* nav 高さ分 + マージン */
-}
-
-/* セクション */
-section {
-  padding: 24px 0;
-  border-bottom: 1px solid #e0e0e0;
-}
-section:last-child {
-  border-bottom: none;
+  padding-top: 0;
 }
 
 /* 見出し */
-h1, h2 {
+h1,
+h2 {
   font-family: 'M PLUS Rounded 1c', sans-serif;
   color: var(--accent);
 }
@@ -135,17 +188,14 @@ h2:hover::after {
 }
 
 /* テキスト */
-p, li {
-  font-size: 1rem;
-  line-height: 1.6;
+p,
+li {
   margin-bottom: 0.5em;
+  line-height: 1.6;
 }
 ul {
   padding-left: 1.2em;
-  margin-bottom: 1em;
 }
-
-/* アイコンマージン */
 li i {
   margin-right: 8px;
   color: var(--accent);
@@ -160,7 +210,6 @@ li i {
 .gallery img {
   width: 100%;
   border-radius: 4px;
-  display: block;
   cursor: pointer;
 }
 
@@ -176,15 +225,14 @@ li i {
   font-weight: 500;
 }
 .btn:hover {
-  background: #cc99ff;
+  background: rgba(204,153,255,0.8);
 }
 
 /* レスポンシブ */
+@media (max-width: 480px) {
+  #nav-toggle { top: 12px; right: 12px; }
+  .container { padding: 16px 12px; }
+}
 @media (min-width: 768px) {
-  .container {
-    padding: 32px;
-  }
-  h1 { font-size: 2.5rem; }
-  h2 { font-size: 2rem; }
-  p, li { font-size: 1.1rem; }
+  .container { padding: 32px; }
 }
