@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ダンス合宿サイト</title>
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Font Awesome（ハンバーガーアイコン用）-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Lightbox CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- サイトロゴ -->
+  <img id="site-logo" src="images/icon.png" alt="サイトロゴ">
+
+  <!-- ハンバーガーメニュー -->
+  <button id="nav-toggle" aria-label="メニューを開く">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- サイドバー -->
+  <nav id="sidebar">
+    <button id="nav-close" aria-label="メニューを閉じる">
+      <i class="fas fa-times"></i>
+    </button>
+    <ul>
+      <li><a href="#section-hero">ようこそ</a></li>
+      <li><a href="#section-2">詳細</a></li>
+      <li><a href="#section-3">スケジュール</a></li>
+      <li><a href="#section-4">持ち物</a></li>
+      <li><a href="#section-5">注意事項</a></li>
+      <li><a href="#section-6">ギャラリー</a></li>
+    </ul>
+  </nav>
+
+  <!-- ヒーローセクション -->
+  <section id="section-hero" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <h1>ダンス合宿で最高の夏を</h1>
+      <p>飲み会、ダンス、花火、サウナなど盛りだくさん！</p>
+      <a href="#section-2" class="btn">詳細を見る</a>
+    </div>
+  </section>
+
+  <!-- メインコンテンツ -->
+  <main id="main-content" class="container">
+    <!-- 各セクションは従来通り -->
+    <!-- ... -->
+  </main>
+
+  <!-- スクリプト読み込み -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  <script> AOS.init({ duration: 800 }); </script>
+</body>
+</html>

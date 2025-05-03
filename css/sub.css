@@ -18,9 +18,6 @@
 }
 
 /* ページ全体 */
-html {
-  scroll-behavior: smooth;
-}
 html,
 body {
   background-color: var(--bg);
@@ -29,9 +26,22 @@ body {
   overflow: auto;
 }
 
+/* コンテナ */
+.container {
+  max-width: 768px;
+  margin: 0 auto;
+  background-color: var(--container-bg);
+  padding: 24px 16px;
+}
+
+/* イントロ */
+#intro {
+  display: none; /* 動画なしのため非表示 */
+}
+
 /* サイトロゴ */
 #site-logo {
-  position: absolute;
+  position: fixed;
   top: 12px;
   left: 12px;
   width: 40px;
@@ -42,7 +52,7 @@ body {
 #nav-toggle {
   position: fixed;
   top: 16px;
-  right: 16px;
+  left: 16px;
   background: transparent;
   border: none;
   font-size: 1.5rem;
@@ -54,26 +64,22 @@ body {
 #sidebar {
   position: fixed;
   top: 0;
-  right: 0;
-  left: auto;
+  left: -250px;
   width: 250px;
   height: 100vh;
   background: var(--container-bg);
-  box-shadow: -2px 0 8px rgba(0,0,0,0.1);
-  transform: translateX(100%);
-  transition: transform 0.3s ease;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  transition: left 0.3s ease;
   z-index: 1050;
   padding-top: 60px;
 }
 #sidebar.open {
-  transform: translateX(0);
+  left: 0;
 }
 #nav-close {
   position: absolute;
   top: 16px;
-  /* サイドバー内の左側に配置 */
-  left: 16px;
-  right: auto;
+  right: 16px;
   background: transparent;
   border: none;
   font-size: 1.2rem;
@@ -100,31 +106,21 @@ body {
 /* ヒーローセクション */
 .hero {
   position: relative;
-  width: 100%;
-  /*aspect-ratio: 16 / 9; /* 横広16:9比率 */
-  height: 100vh;
-  background-image: url('../images/hero-background.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  height: 60vh;
+  background: url('../images/hero.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
-  will-change: transform;
 }
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.4);
 }
-.hero-content.container {
+.hero-content {
   position: relative;
   text-align: center;
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.4);
-  margin: 0;
-  padding: 1em;
-  border-radius: 4px;
 }
 .hero-content h1 {
   font-size: 2rem;
@@ -135,14 +131,6 @@ body {
   margin-bottom: 1em;
 }
 
-/* コンテナ */
-.container {
-  max-width: 768px;
-  margin: 0 auto;
-  background-color: var(--container-bg);
-  padding: 24px 16px;
-}
-
 /* カード風レイアウト */
 .card {
   background: var(--container-bg);
@@ -150,13 +138,12 @@ body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   margin: 24px 0;
   padding: 24px;
-  will-change: transform;
 }
 
 /* メインコンテンツ */
 #main-content {
   display: none;
-  padding-top: 0;
+  padding-top: 16px;
 }
 
 /* 見出し */
@@ -231,7 +218,7 @@ li i {
 
 /* レスポンシブ */
 @media (max-width: 480px) {
-  #nav-toggle { top: 12px; right: 12px; }
+  #nav-toggle { top: 12px; left: 12px; }
   .container { padding: 16px 12px; }
 }
 @media (min-width: 768px) {
